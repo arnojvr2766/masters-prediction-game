@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masters Predictor 2026</title>
+    <meta name="description" content="Pick your Masters field of 20. Rank them 1-20. Lowest score wins." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body, #root { height: 100%; }
+      body {
+        background: #080f0a;
+        color: #f5f0e8;
+        font-family: -apple-system, 'SF Pro Display', Georgia, serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      input::placeholder { color: rgba(255,255,255,0.3); }
+      input[type=number]::-webkit-outer-spin-button,
+      input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+      ::-webkit-scrollbar { width: 0; height: 0; }
+      * { -webkit-tap-highlight-color: transparent; }
+      @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.8); } }
+      @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+      @keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
