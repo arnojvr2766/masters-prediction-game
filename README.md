@@ -26,10 +26,10 @@ git push -u origin main
 5. Vercel gives you a URL like `masters-predictor-2026.vercel.app`
 
 ### Step 4 — Make yourself admin
-1. Open the live app and **sign up** using `Arnojvr@icloud.com`
+1. Open the live app and **sign up** using `your email`
 2. Go back to Supabase → **SQL Editor** → run this one line:
 ```sql
-update profiles set is_admin = true where email = 'Arnojvr@icloud.com';
+update profiles set is_admin = true where email = 'youremail';
 ```
 3. Sign out and back in → **Admin panel** appears on your dashboard
 
