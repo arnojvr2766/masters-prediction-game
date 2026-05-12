@@ -13,11 +13,7 @@ export function calculateScore(picks, liveResults) {
   const breakdown = picks.map((pick) => {
     const result = liveResults.find((r) => r.player_id === pick.player_id)
     if (!result) return { ...pick, actualPos: null, points: 0, exact: false }
-
-    const actualPos = result.missed_cut
-      ? result.position + MISSED_CUT_PENALTY
-      : result.position
-
+    const actualPos = result.missed_cut ? result.position + MISSED_CUT_PENALTY : result.position
     const diff = Math.max(0, Math.abs(actualPos - pick.position))
     const exact = !result.missed_cut && actualPos === pick.position
     const exactBonus = exact ? -(21 - pick.position) : 0
@@ -26,6 +22,65 @@ export function calculateScore(picks, liveResults) {
     return { ...pick, actualPos, points, exact, missedCut: result.missed_cut }
   })
   return { total, breakdown }
+}
+
+// Pick 5: same formula, exact bonus = -(6 - position)
+export function calculatePick5Score(picks, liveResults) {
+  if (!picks || picks.length === 0) return null
+  let total = 0
+  const breakdown = picks.map((pick) => {
+    const result = liveResults.find((r) => r.player_id === pick.player_id)
+    if (!result) return { ...pick, actualPos: null, points: 0, exact: false }
+    const actualPos = result.missed_cut ? result.position + MISSED_CUT_PENALTY : result.position
+    const diff = Math.max(0, Math.abs(actualPos - pick.position))
+    const exact = !result.missed_cut && actualPos === pick.position
+    const exactBonus = exact ? -(6 - pick.position) : 0
+    const points = diff + exactBonus
+    total += points
+    return { ...pick, actualPos, points, exact, missedCut: result.missed_cut }
+  })
+  return { total, breakdown }
+}
+
+// H2H: count correct picks (higher = better, shown as correct/total)
+export function calculateH2HScore(picks, matchups, liveResults) {
+  if (!picks || !matchups || picks.length === 0) return null
+  let correct = 0
+  const breakdown = picks.map((pick) => {
+    const matchup = matchups.find(m => m.id === pick.matchup_id)
+    if (!matchup) return { ...pick, correct: false, resolved: false }
+    const resA = liveResults.find(r => r.player_id === matchup.player_a)
+    const resB = liveResults.find(r => r.player_id === matchup.player_b)
+    if (!resA || !resB) return { ...pick, correct: false, resolved: false }
+    const posA = resA.missed_cut ? resA.position + MISSED_CUT_PENALTY : resA.position
+    const posB = resB.missed_cut ? resB.position + MISSED_CUT_PENALTY : resB.position
+    const winner = posA <= posB ? matchup.player_a : matchup.player_b
+    const isCorrect = pick.picked_player === winner
+    if (isCorrect) correct++
+    return { ...pick, correct: isCorrect, resolved: true, winner }
+  })
+  return { correct, total: picks.length, breakdown }
+}
+
+// Betterball: sum of best position from each pair (lower = better)
+export function calculateBetterballScore(pairs, liveResults) {
+  if (!pairs || pairs.length === 0) return null
+  let total = 0
+  let resolved = 0
+  const breakdown = pairs.map((pair) => {
+    const resA = liveResults.find(r => r.player_id === pair.player_a)
+    const resB = liveResults.find(r => r.player_id === pair.player_b)
+    const posA = resA ? (resA.missed_cut ? resA.position + MISSED_CUT_PENALTY : resA.position) : null
+    const posB = resB ? (resB.missed_cut ? resB.position + MISSED_CUT_PENALTY : resB.position) : null
+    if (posA !== null && posB !== null) {
+      const best = Math.min(posA, posB)
+      total += best
+      resolved++
+      return { ...pair, posA, posB, best }
+    }
+    return { ...pair, posA, posB, best: null }
+  })
+  return { total, resolved, pairs: pairs.length, breakdown }
 }
 
 // ─── PLAYER POOL ──────────────────────────────────────────────────────────────

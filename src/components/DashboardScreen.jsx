@@ -8,7 +8,6 @@ const G = '#0d1f3c'
 
 export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogout, liveResults }) {
   const [picks, setPicks] = useState([])
-  const [leaderPos, setLeaderPos] = useState(null)
   const locked = isPicksLocked()
 
   useEffect(() => {
@@ -40,12 +39,8 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
 
       {/* Score card */}
       {score ? (
-        <div style={{
-          background: `linear-gradient(135deg, ${GOLD}14, rgba(201,168,76,0.05))`,
-          border: `1px solid ${GOLD}30`, borderRadius: 18, padding: '20px',
-          marginBottom: 20, animation: 'slideUp 0.4s ease 0.1s both',
-        }}>
-          <div style={{ fontSize: 10, color: `${GOLD}77`, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 14 }}>Your score</div>
+        <div style={{ background: `linear-gradient(135deg, ${GOLD}14, rgba(201,168,76,0.05))`, border: `1px solid ${GOLD}30`, borderRadius: 18, padding: '20px', marginBottom: 20, animation: 'slideUp 0.4s ease 0.1s both' }}>
+          <div style={{ fontSize: 10, color: `${GOLD}77`, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 14 }}>Main game score</div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
             <div>
               <div style={{ fontSize: 52, fontWeight: 800, color: GOLD, fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>{score.total}</div>
@@ -59,11 +54,7 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
           <div style={{ marginTop: 14, fontSize: 12, color: '#2a4a6a' }}>{picks.length}/20 picks submitted</div>
         </div>
       ) : (
-        <div style={{
-          background: 'rgba(255,255,255,0.03)', border: `1px dashed ${GOLD}28`,
-          borderRadius: 18, padding: '28px 20px', marginBottom: 20, textAlign: 'center',
-          animation: 'slideUp 0.4s ease 0.1s both',
-        }}>
+        <div style={{ background: 'rgba(255,255,255,0.03)', border: `1px dashed ${GOLD}28`, borderRadius: 18, padding: '28px 20px', marginBottom: 20, textAlign: 'center', animation: 'slideUp 0.4s ease 0.1s both' }}>
           <div style={{ fontSize: 36, marginBottom: 10 }}>⛳</div>
           <div style={{ color: '#6a8aaa', fontSize: 15, marginBottom: 4 }}>No picks yet</div>
           <div style={{ color: '#3a5a7a', fontSize: 12 }}>Select 20 players and rank them to play</div>
@@ -77,45 +68,39 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
             background: `linear-gradient(135deg, ${GOLD}, #b8943e)`, color: G,
             border: 'none', borderRadius: 14, padding: '16px 20px',
             fontSize: 16, fontWeight: 800, cursor: 'pointer', textAlign: 'left',
-            fontFamily: "'Playfair Display', serif",
-            boxShadow: `0 6px 24px ${GOLD}28`,
+            fontFamily: "'Playfair Display', serif", boxShadow: `0 6px 24px ${GOLD}28`,
           }}>
             {picks.length === 0 ? '⛳ Make your picks →' : `✏️ Edit picks (${picks.length}/20) →`}
           </button>
         )}
 
-        <button onClick={() => onNav('myPicks')} style={{
-          background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-          borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600,
-          cursor: 'pointer', color: '#a0b8d8', textAlign: 'left',
-        }}>
+        <button onClick={() => onNav('myPicks')} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600, cursor: 'pointer', color: '#a0b8d8', textAlign: 'left' }}>
           📋 My picks & score →
         </button>
 
-        <button onClick={() => onNav('leaderboard')} style={{
-          background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-          borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600,
-          cursor: 'pointer', color: '#a0b8d8', textAlign: 'left',
-        }}>
+        <button onClick={() => onNav('leaderboard')} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600, cursor: 'pointer', color: '#a0b8d8', textAlign: 'left' }}>
           🏆 Leaderboard →
         </button>
 
+        {/* Mini-games button */}
+        <button onClick={() => onNav('miniGames')} style={{
+          background: 'rgba(201,168,76,0.06)', border: `1px solid ${GOLD}22`,
+          borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600,
+          cursor: 'pointer', color: `${GOLD}cc`, textAlign: 'left',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        }}>
+          <span>🎯 Mini-games →</span>
+          <span style={{ fontSize: 10, color: '#3a5a7a', fontWeight: 400 }}>Pick5 · H2H · Betterball</span>
+        </button>
+
         {isAdmin && (
-          <button onClick={() => onNav('admin')} style={{
-            background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}28`,
-            borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600,
-            cursor: 'pointer', color: GOLD, textAlign: 'left',
-          }}>
+          <button onClick={() => onNav('admin')} style={{ background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}28`, borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600, cursor: 'pointer', color: GOLD, textAlign: 'left' }}>
             ⚙️ Admin — update standings →
           </button>
         )}
       </div>
 
-      {/* Sign out */}
-      <button onClick={onLogout} style={{
-        marginTop: 36, background: 'none', border: 'none',
-        color: '#1e3460', fontSize: 12, cursor: 'pointer', textDecoration: 'underline',
-      }}>
+      <button onClick={onLogout} style={{ marginTop: 36, background: 'none', border: 'none', color: '#1e3460', fontSize: 12, cursor: 'pointer', textDecoration: 'underline' }}>
         Sign out
       </button>
     </div>
