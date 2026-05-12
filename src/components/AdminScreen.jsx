@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase'
 import { PLAYER_POOL } from '../lib/constants'
 
 const GOLD = '#c9a84c'
-const G = '#1a3a2a'
+const G = '#0d1f3c'
 
 export default function AdminScreen({ onNav, isAdmin, onResultsUpdate }) {
   const [results, setResults] = useState(
@@ -42,20 +42,20 @@ export default function AdminScreen({ onNav, isAdmin, onResultsUpdate }) {
     }
   }
 
-  const ghostBtn = { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18, padding: '8px 14px', color: '#a0b8a8', fontSize: 13, cursor: 'pointer' }
+  const ghostBtn = { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18, padding: '8px 14px', color: '#8098b8', fontSize: 13, cursor: 'pointer' }
 
   if (!isAdmin) return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 40, textAlign: 'center' }}>
       <div style={{ fontSize: 48, marginBottom: 16 }}>🚫</div>
       <div style={{ color: '#f87171', fontFamily: "'Playfair Display', serif", fontSize: 20, marginBottom: 8 }}>Access denied</div>
-      <div style={{ color: '#5a8a62', fontSize: 14, marginBottom: 24 }}>You need admin privileges to access this page.</div>
+      <div style={{ color: '#3a5a7a', fontSize: 14, marginBottom: 24 }}>You need admin privileges to access this page.</div>
       <button onClick={() => onNav('dashboard')} style={ghostBtn}>← Back home</button>
     </div>
   )
 
   return (
     <div style={{ minHeight: '100vh', paddingBottom: 100 }}>
-      <div style={{ padding: '14px 18px', position: 'sticky', top: 0, zIndex: 20, background: 'rgba(8,15,10,0.95)', backdropFilter: 'blur(14px)' }}>
+      <div style={{ padding: '14px 18px', position: 'sticky', top: 0, zIndex: 20, background: 'rgba(8,11,18,0.95)', backdropFilter: 'blur(14px)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <button onClick={() => onNav('dashboard')} style={ghostBtn}>← Home</button>
           <div style={{ fontFamily: "'Playfair Display', serif", color: GOLD, fontSize: 17, fontWeight: 700 }}>Admin Panel</div>
@@ -64,7 +64,7 @@ export default function AdminScreen({ onNav, isAdmin, onResultsUpdate }) {
       </div>
 
       <div style={{ padding: '12px 14px' }}>
-        <div style={{ fontSize: 10, color: '#3a5a42', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 14 }}>Update Live Standings</div>
+        <div style={{ fontSize: 10, color: '#2a4a6a', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 14 }}>Update Live Standings</div>
 
         {loading ? (
           <div style={{ textAlign: 'center', padding: 40, color: GOLD }}>Loading…</div>
@@ -93,7 +93,7 @@ export default function AdminScreen({ onNav, isAdmin, onResultsUpdate }) {
                     onChange={e => setResults(prev => prev.map(x => x.player_id === player.id ? { ...x, missed_cut: e.target.checked } : x))}
                     style={{ accentColor: GOLD, width: 15, height: 15 }}
                   />
-                  <span style={{ fontSize: 11, color: '#7a9a80' }}>MC</span>
+                  <span style={{ fontSize: 11, color: '#6a8aaa' }}>MC</span>
                 </label>
               </div>
             )

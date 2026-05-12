@@ -4,7 +4,7 @@ import { PLAYER_POOL, isPicksLocked } from '../lib/constants'
 import PlayerAvatar from './PlayerAvatar'
 
 const GOLD = '#c9a84c'
-const G = '#1a3a2a'
+const G = '#0d1f3c'
 
 export default function PickScreen({ userId, onNav, liveResults }) {
   const [picks, setPicks] = useState([])      // [{player_id, position}]
@@ -66,7 +66,7 @@ export default function PickScreen({ userId, onNav, liveResults }) {
       return 0
     })
 
-  const ghostBtn = { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '8px 14px', color: '#a0b8a8', fontSize: 13, cursor: 'pointer' }
+  const ghostBtn = { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '8px 14px', color: '#8098b8', fontSize: 13, cursor: 'pointer' }
 
   if (loading) return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -78,7 +78,7 @@ export default function PickScreen({ userId, onNav, liveResults }) {
     <div style={{ minHeight: '100vh', paddingBottom: 100 }}>
 
       {/* Header */}
-      <div style={{ padding: '14px 18px 0', position: 'sticky', top: 0, zIndex: 20, background: 'rgba(8,15,10,0.95)', backdropFilter: 'blur(14px)' }}>
+      <div style={{ padding: '14px 18px 0', position: 'sticky', top: 0, zIndex: 20, background: 'rgba(8,11,18,0.95)', backdropFilter: 'blur(14px)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
           <button onClick={() => onNav('dashboard')} style={ghostBtn}>← Back</button>
           <div style={{ fontFamily: "'Playfair Display', serif", color: GOLD, fontSize: 17, fontWeight: 700 }}>
@@ -105,7 +105,7 @@ export default function PickScreen({ userId, onNav, liveResults }) {
                 <button key={v} onClick={() => setSortBy(v)} style={{
                   borderRadius: 18, padding: '6px 13px', fontSize: 11, cursor: 'pointer', whiteSpace: 'nowrap', fontWeight: 600,
                   background: sortBy === v ? `${GOLD}30` : 'rgba(255,255,255,0.06)',
-                  color: sortBy === v ? GOLD : '#7a9a80',
+                  color: sortBy === v ? GOLD : '#6a8aaa',
                   border: sortBy === v ? `1px solid ${GOLD}44` : '1px solid rgba(255,255,255,0.08)',
                 }}>
                   {label}
@@ -118,7 +118,7 @@ export default function PickScreen({ userId, onNav, liveResults }) {
 
       {locked && (
         <div style={{ margin: '12px 18px', padding: '12px 16px', background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.2)', borderRadius: 12, fontSize: 13, color: '#f87171', textAlign: 'center' }}>
-          Picks closed at 16:00 SAST on Thu 10 Apr. View your selections below.
+          Picks closed at 14:00 SAST on Thu 14 May. View your selections below.
         </div>
       )}
 
@@ -145,9 +145,9 @@ export default function PickScreen({ userId, onNav, liveResults }) {
                   <span style={{ fontSize: 14 }}>{player.country}</span>
                 </div>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: 10, color: '#7a9a80' }}>#{player.rank} world</span>
+                  <span style={{ fontSize: 10, color: '#6a8aaa' }}>#{player.rank} world</span>
                   <span style={{ fontSize: 10, color: `${GOLD}88` }}>{player.odds}</span>
-                  <span style={{ fontSize: 10, color: '#7a9a80' }}>avg T{Math.round(player.avgFinish)}</span>
+                  <span style={{ fontSize: 10, color: '#6a8aaa' }}>avg T{Math.round(player.avgFinish)}</span>
                   {player.wins > 0 && <span style={{ fontSize: 10, color: '#4ade80' }}>🏆 {player.wins}×</span>}
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default function PickScreen({ userId, onNav, liveResults }) {
 
       {/* Bottom bar */}
       {!locked && picks.length > 0 && (
-        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '14px 18px', background: 'rgba(8,15,10,0.94)', backdropFilter: 'blur(20px)', borderTop: `1px solid ${GOLD}2a` }}>
+        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '14px 18px', background: 'rgba(8,11,18,0.94)', backdropFilter: 'blur(20px)', borderTop: `1px solid ${GOLD}2a` }}>
           {saveMsg ? (
             <div style={{ textAlign: 'center', color: '#4ade80', fontWeight: 700, padding: '14px 0' }}>{saveMsg}</div>
           ) : (

@@ -8,7 +8,7 @@ import MyPicksScreen from './components/MyPicksScreen'
 import LeaderboardScreen from './components/LeaderboardScreen'
 import AdminScreen from './components/AdminScreen'
 
-const G = '#1a3a2a'
+const G = '#0d1f3c'
 const GOLD = '#c9a84c'
 
 // Default live results — replaced by DB data
@@ -78,7 +78,7 @@ export default function App() {
   if (booting) return (
     <div style={{
       minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-      background: 'radial-gradient(ellipse at top, #1e4530 0%, #0f2218 40%, #080f0a 100%)',
+      background: 'radial-gradient(ellipse at top, #0e1e3a 0%, #080e1c 40%, #080b12 100%)',
     }}>
       <div style={{ textAlign: 'center' }}>
         <div style={{ fontSize: 48, marginBottom: 16 }}>⛳</div>
@@ -90,7 +90,7 @@ export default function App() {
   return (
     <div style={{
       minHeight: '100vh', maxWidth: 430, margin: '0 auto',
-      background: 'radial-gradient(ellipse at top, #1e4530 0%, #0f2218 40%, #080f0a 100%)',
+      background: 'radial-gradient(ellipse at top, #0e1e3a 0%, #080e1c 40%, #080b12 100%)',
       color: '#f5f0e8', fontFamily: "-apple-system, 'SF Pro Display', Georgia, serif",
       position: 'relative',
     }}>

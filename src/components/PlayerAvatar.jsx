@@ -1,6 +1,6 @@
 const PALETTES = [
-  ['#1a3a2a', '#c9a84c'], ['#2d5a3d', '#f0c060'],
-  ['#0f2419', '#d4a843'], ['#1e4530', '#e8b84b'], ['#152e20', '#b8943e'],
+  ['#0d1f3c', '#c9a84c'], ['#112850', '#f0c060'],
+  ['#091428', '#d4a843'], ['#0e2248', '#e8b84b'], ['#0a1a38', '#b8943e'],
 ]
 
 export default function PlayerAvatar({ initials, size = 48, seed = 0 }) {

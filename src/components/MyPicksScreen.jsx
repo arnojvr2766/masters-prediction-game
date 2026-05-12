@@ -4,7 +4,7 @@ import { PLAYER_POOL, calculateScore, isPicksLocked } from '../lib/constants'
 import PlayerAvatar from './PlayerAvatar'
 
 const GOLD = '#c9a84c'
-const G = '#1a3a2a'
+const G = '#0d1f3c'
 
 export default function MyPicksScreen({ userId, onNav, liveResults }) {
   const [picks, setPicks] = useState([])
@@ -44,7 +44,7 @@ export default function MyPicksScreen({ userId, onNav, liveResults }) {
   }
 
   const score = calculateScore(picks, liveResults)
-  const ghostBtn = { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18, padding: '8px 14px', color: '#a0b8a8', fontSize: 13, cursor: 'pointer' }
+  const ghostBtn = { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18, padding: '8px 14px', color: '#8098b8', fontSize: 13, cursor: 'pointer' }
 
   if (loading) return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -64,7 +64,7 @@ export default function MyPicksScreen({ userId, onNav, liveResults }) {
     <div style={{ minHeight: '100vh', paddingBottom: 100 }}>
 
       {/* Header */}
-      <div style={{ padding: '14px 18px', position: 'sticky', top: 0, zIndex: 20, background: 'rgba(8,15,10,0.95)', backdropFilter: 'blur(14px)' }}>
+      <div style={{ padding: '14px 18px', position: 'sticky', top: 0, zIndex: 20, background: 'rgba(8,11,18,0.95)', backdropFilter: 'blur(14px)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
           <button onClick={() => onNav('picks')} style={ghostBtn}>← Edit</button>
           <div style={{ fontFamily: "'Playfair Display', serif", color: GOLD, fontSize: 17, fontWeight: 700 }}>My Picks</div>
@@ -75,16 +75,16 @@ export default function MyPicksScreen({ userId, onNav, liveResults }) {
         {score && (
           <div style={{ background: `${GOLD}12`, border: `1px solid ${GOLD}2a`, borderRadius: 14, padding: '14px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <div style={{ fontSize: 10, color: '#5a8a62', marginBottom: 3, letterSpacing: 1 }}>CURRENT SCORE</div>
+              <div style={{ fontSize: 10, color: '#3a5a7a', marginBottom: 3, letterSpacing: 1 }}>CURRENT SCORE</div>
               <div style={{ fontSize: 34, fontWeight: 800, color: GOLD, fontFamily: "'Playfair Display', serif" }}>{score.total}</div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 10, color: '#5a8a62', marginBottom: 3, letterSpacing: 1 }}>EXACT MATCHES</div>
+              <div style={{ fontSize: 10, color: '#3a5a7a', marginBottom: 3, letterSpacing: 1 }}>EXACT MATCHES</div>
               <div style={{ fontSize: 28, color: '#4ade80', fontWeight: 700 }}>{score.breakdown.filter(b => b.exact).length}</div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 10, color: '#5a8a62', marginBottom: 3, letterSpacing: 1 }}>PICKS</div>
-              <div style={{ fontSize: 28, color: '#c8d8c8', fontWeight: 700 }}>{picks.length}/20</div>
+              <div style={{ fontSize: 10, color: '#3a5a7a', marginBottom: 3, letterSpacing: 1 }}>PICKS</div>
+              <div style={{ fontSize: 28, color: '#a0b8d8', fontWeight: 700 }}>{picks.length}/20</div>
             </div>
           </div>
         )}
@@ -92,7 +92,7 @@ export default function MyPicksScreen({ userId, onNav, liveResults }) {
 
       {locked && (
         <div style={{ margin: '0 18px 12px', padding: '11px 16px', background: 'rgba(248,113,113,0.07)', border: '1px solid rgba(248,113,113,0.18)', borderRadius: 11, fontSize: 12, color: '#f87171', textAlign: 'center' }}>
-          🔒 Picks are locked. Closed Thu 10 Apr at 16:00 SAST.
+          🔒 Picks are locked. Closed Thu 14 May at 14:00 SAST.
         </div>
       )}
 
@@ -122,7 +122,7 @@ export default function MyPicksScreen({ userId, onNav, liveResults }) {
               <PlayerAvatar initials={player.img} size={36} seed={player.id} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ color: '#f5f0e8', fontWeight: 600, fontSize: 13, marginBottom: 1 }}>{player.name}</div>
-                <div style={{ fontSize: 10, color: '#5a8a62' }}>
+                <div style={{ fontSize: 10, color: '#3a5a7a' }}>
                   {sd?.actualPos != null ? `Actual: T${sd.actualPos}${sd.missedCut ? ' (MC)' : ''}` : 'Live: —'}
                 </div>
               </div>
@@ -135,8 +135,8 @@ export default function MyPicksScreen({ userId, onNav, liveResults }) {
                 )}
                 {!locked && (
                   <div style={{ display: 'flex', gap: 3, marginTop: 2 }}>
-                    <button onClick={() => moveUp(idx)} style={{ background: 'rgba(255,255,255,0.08)', border: 'none', borderRadius: 5, width: 22, height: 22, cursor: 'pointer', color: '#7a9a80', fontSize: 12 }}>↑</button>
-                    <button onClick={() => moveDown(idx)} style={{ background: 'rgba(255,255,255,0.08)', border: 'none', borderRadius: 5, width: 22, height: 22, cursor: 'pointer', color: '#7a9a80', fontSize: 12 }}>↓</button>
+                    <button onClick={() => moveUp(idx)} style={{ background: 'rgba(255,255,255,0.08)', border: 'none', borderRadius: 5, width: 22, height: 22, cursor: 'pointer', color: '#6a8aaa', fontSize: 12 }}>↑</button>
+                    <button onClick={() => moveDown(idx)} style={{ background: 'rgba(255,255,255,0.08)', border: 'none', borderRadius: 5, width: 22, height: 22, cursor: 'pointer', color: '#6a8aaa', fontSize: 12 }}>↓</button>
                   </div>
                 )}
               </div>
@@ -147,7 +147,7 @@ export default function MyPicksScreen({ userId, onNav, liveResults }) {
 
       {/* Bottom CTA */}
       {!locked && picks.length < 20 && (
-        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '14px 18px', background: 'rgba(8,15,10,0.94)', backdropFilter: 'blur(20px)', borderTop: `1px solid ${GOLD}2a` }}>
+        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '14px 18px', background: 'rgba(8,11,18,0.94)', backdropFilter: 'blur(20px)', borderTop: `1px solid ${GOLD}2a` }}>
           <button onClick={() => onNav('picks')} style={{
             width: '100%', background: `${GOLD}30`, color: GOLD,
             border: `1px solid ${GOLD}40`, borderRadius: 13, padding: '14px',

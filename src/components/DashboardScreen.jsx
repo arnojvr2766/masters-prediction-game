@@ -4,7 +4,7 @@ import { calculateScore, isPicksLocked } from '../lib/constants'
 import PlayerAvatar from './PlayerAvatar'
 
 const GOLD = '#c9a84c'
-const G = '#1a3a2a'
+const G = '#0d1f3c'
 
 export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogout, liveResults }) {
   const [picks, setPicks] = useState([])
@@ -27,14 +27,14 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
       {/* Greeting */}
       <div style={{ marginBottom: 32, animation: 'slideUp 0.4s ease both' }}>
         <div style={{ fontSize: 10, letterSpacing: 4, color: `${GOLD}66`, textTransform: 'uppercase', marginBottom: 6, fontFamily: 'Georgia, serif' }}>
-          Augusta National · 2026
+          PGA Championship · 2026
         </div>
         <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 30, fontWeight: 800, color: '#f5f0e8', lineHeight: 1.2 }}>
           Welcome back,<br /><span style={{ color: GOLD }}>{userName}</span>
         </h1>
         <div style={{ marginTop: 8, fontSize: 13, color: locked ? '#f87171' : '#4ade80', display: 'flex', alignItems: 'center', gap: 5 }}>
           <div style={{ width: 6, height: 6, borderRadius: '50%', background: locked ? '#f87171' : '#4ade80', animation: locked ? 'none' : 'pulse 1.5s infinite' }} />
-          {locked ? 'Picks are locked · 16:00 SAST passed' : 'Picks open until Thu 10 Apr 16:00 SAST'}
+          {locked ? 'Picks are locked · 14:00 SAST passed' : 'Picks open until Thu 14 May 14:00 SAST'}
         </div>
       </div>
 
@@ -49,14 +49,14 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
             <div>
               <div style={{ fontSize: 52, fontWeight: 800, color: GOLD, fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>{score.total}</div>
-              <div style={{ fontSize: 12, color: '#5a8a62', marginTop: 4 }}>points · lower is better</div>
+              <div style={{ fontSize: 12, color: '#3a5a7a', marginTop: 4 }}>points · lower is better</div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 11, color: '#4a6a52', marginBottom: 2 }}>exact matches</div>
+              <div style={{ fontSize: 11, color: '#2a4a6a', marginBottom: 2 }}>exact matches</div>
               <div style={{ fontSize: 32, color: '#4ade80', fontWeight: 800 }}>{score.breakdown.filter(b => b.exact).length}</div>
             </div>
           </div>
-          <div style={{ marginTop: 14, fontSize: 12, color: '#4a6a52' }}>{picks.length}/20 picks submitted</div>
+          <div style={{ marginTop: 14, fontSize: 12, color: '#2a4a6a' }}>{picks.length}/20 picks submitted</div>
         </div>
       ) : (
         <div style={{
@@ -65,8 +65,8 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
           animation: 'slideUp 0.4s ease 0.1s both',
         }}>
           <div style={{ fontSize: 36, marginBottom: 10 }}>⛳</div>
-          <div style={{ color: '#7a9a80', fontSize: 15, marginBottom: 4 }}>No picks yet</div>
-          <div style={{ color: '#4a6a52', fontSize: 12 }}>Select 20 players and rank them to play</div>
+          <div style={{ color: '#6a8aaa', fontSize: 15, marginBottom: 4 }}>No picks yet</div>
+          <div style={{ color: '#3a5a7a', fontSize: 12 }}>Select 20 players and rank them to play</div>
         </div>
       )}
 
@@ -87,7 +87,7 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
         <button onClick={() => onNav('myPicks')} style={{
           background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
           borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600,
-          cursor: 'pointer', color: '#c8d8c8', textAlign: 'left',
+          cursor: 'pointer', color: '#a0b8d8', textAlign: 'left',
         }}>
           📋 My picks & score →
         </button>
@@ -95,7 +95,7 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
         <button onClick={() => onNav('leaderboard')} style={{
           background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
           borderRadius: 14, padding: '14px 20px', fontSize: 14, fontWeight: 600,
-          cursor: 'pointer', color: '#c8d8c8', textAlign: 'left',
+          cursor: 'pointer', color: '#a0b8d8', textAlign: 'left',
         }}>
           🏆 Leaderboard →
         </button>
@@ -114,7 +114,7 @@ export default function DashboardScreen({ user, userName, isAdmin, onNav, onLogo
       {/* Sign out */}
       <button onClick={onLogout} style={{
         marginTop: 36, background: 'none', border: 'none',
-        color: '#2e4a36', fontSize: 12, cursor: 'pointer', textDecoration: 'underline',
+        color: '#1e3460', fontSize: 12, cursor: 'pointer', textDecoration: 'underline',
       }}>
         Sign out
       </button>

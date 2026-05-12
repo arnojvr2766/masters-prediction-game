@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 
-const G = '#1a3a2a'
+const G = '#0d1f3c'
 const GOLD = '#c9a84c'
 
 const inputStyle = {
@@ -13,7 +13,7 @@ const inputStyle = {
 
 const ghostBtn = {
   background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)',
-  borderRadius: 20, padding: '10px 20px', color: '#a0b8a8', fontSize: 14, cursor: 'pointer',
+  borderRadius: 20, padding: '10px 20px', color: '#8098b8', fontSize: 14, cursor: 'pointer',
 }
 
 export default function HomeScreen({ onLogin, onNav }) {
@@ -66,7 +66,7 @@ export default function HomeScreen({ onLogin, onNav }) {
   const examples = [
     { name: 'Scheffler', picked: 1, actual: 1, exact: true },
     { name: 'McIlroy',   picked: 2, actual: 4, exact: false },
-    { name: 'Rahm',      picked: 5, actual: null, mc: true },
+    { name: 'Koepka',    picked: 5, actual: null, mc: true },
   ]
 
   return (
@@ -84,16 +84,16 @@ export default function HomeScreen({ onLogin, onNav }) {
         </div>
 
         <div style={{ fontSize: 10, letterSpacing: 7, color: `${GOLD}88`, textTransform: 'uppercase', marginBottom: 12, fontFamily: 'Georgia, serif' }}>
-          Augusta National · April 2026
+          PGA Championship · May 2026
         </div>
-        <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(38px,9vw,62px)', fontWeight: 800, color: '#f5f0e8', margin: '0 0 4px', lineHeight: 1.05 }}>
-          Masters
+        <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(28px,7vw,48px)', fontWeight: 800, color: '#f5f0e8', margin: '0 0 4px', lineHeight: 1.05 }}>
+          PGA Championship
         </h1>
         <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(38px,9vw,62px)', fontWeight: 800, color: GOLD, margin: '0 0 18px', lineHeight: 1.05 }}>
           Predictor
         </h1>
-        <p style={{ color: '#7a9a80', fontSize: 16, maxWidth: 290, margin: '0 auto', lineHeight: 1.65 }}>
-          The fantasy game where <em style={{ color: '#a8c8b0', fontStyle: 'normal' }}>precision beats luck</em>.<br />
+        <p style={{ color: '#6a8aaa', fontSize: 16, maxWidth: 290, margin: '0 auto', lineHeight: 1.65 }}>
+          The fantasy game where <em style={{ color: '#8aaac8', fontStyle: 'normal' }}>precision beats luck</em>.<br />
           Pick 20 golfers. Rank them perfectly. Win.
         </p>
       </div>
@@ -106,15 +106,15 @@ export default function HomeScreen({ onLogin, onNav }) {
           </span>
         </div>
         {[
-          { n: '01', title: 'Pick your field', body: 'Choose 20 players from the Masters field — world #1s to dark horses.' },
-          { n: '02', title: 'Rank them 1–20',  body: 'Predict the finishing order. Your #1 pick should win the green jacket.' },
+          { n: '01', title: 'Pick your field', body: 'Choose 20 players from the PGA Championship field — world #1s to dark horses.' },
+          { n: '02', title: 'Rank them 1–20',  body: 'Predict the finishing order. Your #1 pick should lift the Wanamaker Trophy.' },
           { n: '03', title: 'Lowest score wins', body: 'Score = |your rank − actual finish|. Nail it exactly and earn a bonus. Fewest points wins.' },
         ].map(s => (
           <div key={s.n} style={{ display: 'flex', gap: 16, marginBottom: 18, alignItems: 'flex-start' }}>
             <div style={{ fontSize: 26, fontWeight: 800, color: `${GOLD}38`, fontFamily: "'Playfair Display', serif", lineHeight: 1, flexShrink: 0, width: 34, textAlign: 'right' }}>{s.n}</div>
             <div style={{ paddingTop: 2 }}>
               <div style={{ color: '#f5f0e8', fontWeight: 700, fontSize: 15, marginBottom: 3, fontFamily: "'Playfair Display', serif" }}>{s.title}</div>
-              <div style={{ color: '#5a7a62', fontSize: 13, lineHeight: 1.6 }}>{s.body}</div>
+              <div style={{ color: '#3a5a7a', fontSize: 13, lineHeight: 1.6 }}>{s.body}</div>
             </div>
           </div>
         ))}
@@ -127,7 +127,7 @@ export default function HomeScreen({ onLogin, onNav }) {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 50px 50px 46px', gap: 6, marginBottom: 8, paddingBottom: 8, borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           {['Player', 'Picked', 'Actual', 'Pts'].map(h => (
-            <div key={h} style={{ fontSize: 10, color: '#3a5a42', textTransform: 'uppercase', letterSpacing: 1, textAlign: h !== 'Player' ? 'center' : 'left' }}>{h}</div>
+            <div key={h} style={{ fontSize: 10, color: '#2a4a6a', textTransform: 'uppercase', letterSpacing: 1, textAlign: h !== 'Player' ? 'center' : 'left' }}>{h}</div>
           ))}
         </div>
 
@@ -162,13 +162,13 @@ export default function HomeScreen({ onLogin, onNav }) {
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 12, marginTop: 4, display: 'flex', flexDirection: 'column', gap: 7 }}>
           <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
             <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', marginTop: 4, flexShrink: 0 }} />
-            <div style={{ fontSize: 11, color: '#4a6a52', lineHeight: 1.5 }}>
-              <span style={{ color: '#7ab87a', fontWeight: 700 }}>Exact match bonus:</span> Pick #1 right = −20 pts. Pick #20 = −1 pt.
+            <div style={{ fontSize: 11, color: '#2a4a6a', lineHeight: 1.5 }}>
+              <span style={{ color: '#4a8ab8', fontWeight: 700 }}>Exact match bonus:</span> Pick #1 right = −20 pts. Pick #20 = −1 pt.
             </div>
           </div>
           <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
             <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#f87171', marginTop: 4, flexShrink: 0 }} />
-            <div style={{ fontSize: 11, color: '#4a6a52', lineHeight: 1.5 }}>
+            <div style={{ fontSize: 11, color: '#2a4a6a', lineHeight: 1.5 }}>
               <span style={{ color: '#f8a0a0', fontWeight: 700 }}>Missed cut:</span> +50 added to their finish position before scoring.
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function HomeScreen({ onLogin, onNav }) {
                 flex: 1, padding: '11px 0', border: 'none', borderRadius: 10, cursor: 'pointer',
                 fontWeight: 700, fontSize: 14, transition: 'all 0.2s',
                 background: mode === m ? `linear-gradient(135deg, ${GOLD}e0, #b8943e)` : 'transparent',
-                color: mode === m ? G : '#4a6a52',
+                color: mode === m ? G : '#3a5a7a',
                 fontFamily: "'Playfair Display', serif",
               }}>
                 {label}
@@ -228,8 +228,8 @@ export default function HomeScreen({ onLogin, onNav }) {
             {loading || (mode === 'signup' ? 'Create my account →' : 'Sign in & play →')}
           </button>
 
-          <div style={{ textAlign: 'center', marginTop: 18, fontSize: 11, color: '#2e4a36' }}>
-            Picks close Thu 10 Apr at 16:00 SAST · Free to play
+          <div style={{ textAlign: 'center', marginTop: 18, fontSize: 11, color: '#1e3460' }}>
+            Picks close Thu 14 May at 14:00 SAST · Free to play
           </div>
         </div>
       </div>

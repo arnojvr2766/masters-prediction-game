@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { LOCK_TIME_UTC } from '../lib/constants'
 
 const GOLD = '#c9a84c'
-const G = '#1a3a2a'
+const G = '#0d1f3c'
 
 export default function CountdownBanner() {
   const [cd, setCd] = useState({ d: 0, h: 0, m: 0, s: 0, expired: false })
@@ -29,7 +29,7 @@ export default function CountdownBanner() {
       position: 'sticky', top: 0, zIndex: 50,
       background: cd.expired
         ? 'rgba(248,113,113,0.12)'
-        : 'linear-gradient(90deg, rgba(10,22,15,0.97), rgba(20,46,30,0.97))',
+        : 'linear-gradient(90deg, rgba(8,14,24,0.97), rgba(14,28,52,0.97))',
       borderBottom: `1px solid ${cd.expired ? 'rgba(248,113,113,0.35)' : GOLD + '2a'}`,
       backdropFilter: 'blur(16px)',
       padding: '9px 20px',
@@ -43,14 +43,14 @@ export default function CountdownBanner() {
           boxShadow: cd.expired ? '0 0 6px #f87171' : '0 0 7px #4ade80',
           animation: cd.expired ? 'none' : 'pulse 1.5s ease-in-out infinite',
         }} />
-        <span style={{ fontSize: 10, color: cd.expired ? '#f87171' : '#5a8a62', letterSpacing: 1.5, textTransform: 'uppercase' }}>
+        <span style={{ fontSize: 10, color: cd.expired ? '#f87171' : '#3a5a7a', letterSpacing: 1.5, textTransform: 'uppercase' }}>
           {cd.expired ? 'Picks locked' : 'Picks close'}
         </span>
       </div>
 
       {/* Right countdown or locked */}
       {cd.expired ? (
-        <span style={{ fontSize: 12, fontWeight: 700, color: '#f87171' }}>🔒 Closed — Thu 10 Apr 16:00 SAST</span>
+        <span style={{ fontSize: 12, fontWeight: 700, color: '#f87171' }}>🔒 Closed — Thu 14 May 14:00 SAST</span>
       ) : (
         <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
           {[{ v: cd.d, l: 'd' }, { v: cd.h, l: 'h' }, { v: cd.m, l: 'm' }, { v: cd.s, l: 's' }].map(({ v, l }, i) => (
@@ -68,7 +68,7 @@ export default function CountdownBanner() {
               {i < 3 && <span style={{ fontSize: 11, color: `${GOLD}30`, marginRight: 3 }}>·</span>}
             </div>
           ))}
-          <span style={{ fontSize: 10, color: '#3a5a42', marginLeft: 4 }}>SAST</span>
+          <span style={{ fontSize: 10, color: '#2a4a6a', marginLeft: 4 }}>SAST</span>
         </div>
       )}
     </div>

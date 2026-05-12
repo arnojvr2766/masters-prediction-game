@@ -4,7 +4,7 @@ import { calculateScore, PLAYER_POOL } from '../lib/constants'
 import PlayerAvatar from './PlayerAvatar'
 
 const GOLD = '#c9a84c'
-const G = '#1a3a2a'
+const G = '#0d1f3c'
 
 export default function LeaderboardScreen({ onNav, liveResults, currentUserId }) {
   const [entries, setEntries] = useState([])
@@ -47,14 +47,14 @@ export default function LeaderboardScreen({ onNav, liveResults, currentUserId })
     return () => clearInterval(id)
   }, [liveResults])
 
-  const ghostBtn = { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18, padding: '8px 14px', color: '#a0b8a8', fontSize: 13, cursor: 'pointer' }
+  const ghostBtn = { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18, padding: '8px 14px', color: '#8098b8', fontSize: 13, cursor: 'pointer' }
 
   const topFive = [...liveResults].sort((a, b) => a.position - b.position).slice(0, 5)
 
   return (
     <div style={{ minHeight: '100vh', paddingBottom: 40 }}>
       {/* Header */}
-      <div style={{ padding: '14px 18px', position: 'sticky', top: 0, zIndex: 20, background: 'rgba(8,15,10,0.95)', backdropFilter: 'blur(14px)' }}>
+      <div style={{ padding: '14px 18px', position: 'sticky', top: 0, zIndex: 20, background: 'rgba(8,11,18,0.95)', backdropFilter: 'blur(14px)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
           <button onClick={() => onNav('dashboard')} style={ghostBtn}>← Home</button>
           <div style={{ fontFamily: "'Playfair Display', serif", color: GOLD, fontSize: 17, fontWeight: 700 }}>Leaderboard</div>
@@ -64,10 +64,10 @@ export default function LeaderboardScreen({ onNav, liveResults, currentUserId })
           </div>
         </div>
 
-        {/* Masters mini leaderboard */}
+        {/* PGA Championship mini leaderboard */}
         {liveResults.length > 0 && (
           <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 13, padding: '12px 14px', marginBottom: 4 }}>
-            <div style={{ fontSize: 10, color: '#3a5a42', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 10 }}>Masters Leaderboard</div>
+            <div style={{ fontSize: 10, color: '#2a4a6a', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 10 }}>PGA Championship Leaderboard</div>
             {topFive.map(r => {
               const player = PLAYER_POOL.find(p => p.id === r.player_id)
               return player ? (
@@ -88,14 +88,14 @@ export default function LeaderboardScreen({ onNav, liveResults, currentUserId })
 
       {/* Predictor standings */}
       <div style={{ padding: '12px 14px 0' }}>
-        <div style={{ fontSize: 10, color: '#3a5a42', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 12 }}>
+        <div style={{ fontSize: 10, color: '#2a4a6a', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 12 }}>
           Predictor Standings
         </div>
 
         {loading ? (
           <div style={{ textAlign: 'center', padding: '40px 0', color: GOLD, fontFamily: "'Playfair Display', serif" }}>Loading…</div>
         ) : entries.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '40px 0', color: '#5a8a62' }}>No picks submitted yet.</div>
+          <div style={{ textAlign: 'center', padding: '40px 0', color: '#3a5a7a' }}>No picks submitted yet.</div>
         ) : (
           entries.map((entry, idx) => {
             const isMe = entry.id === currentUserId
@@ -130,7 +130,7 @@ export default function LeaderboardScreen({ onNav, liveResults, currentUserId })
                     {isMe && <span style={{ marginLeft: 8, fontSize: 11, color: GOLD, fontWeight: 600 }}>you</span>}
                     {idx === 0 && !isMe && <span style={{ marginLeft: 6 }}>🏆</span>}
                   </div>
-                  <div style={{ fontSize: 10, color: '#4a6a52' }}>
+                  <div style={{ fontSize: 10, color: '#2a4a6a' }}>
                     {entry.score?.breakdown.filter(b => b.exact).length ?? 0} exact · {entry.picks.length} picks
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export default function LeaderboardScreen({ onNav, liveResults, currentUserId })
                   <div style={{ fontSize: 26, fontWeight: 800, color: idx === 0 ? GOLD : '#d8d0c0', fontFamily: "'Playfair Display', serif" }}>
                     {entry.score?.total ?? '—'}
                   </div>
-                  <div style={{ fontSize: 10, color: '#3a5a42' }}>pts</div>
+                  <div style={{ fontSize: 10, color: '#2a4a6a' }}>pts</div>
                 </div>
               </div>
             )
